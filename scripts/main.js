@@ -60,12 +60,22 @@ function draw() {
             dy += -1
         }
         else {  // it hit the floor!
-            alert("YOU TOUCHED THE LAVA, GAME OVER :(");
-            document.location.reload();
-            clearInterval(interval);  // needed for the browser to end the game
+            lives --;
+if(!lives) {
+        alert("YOU TOUCHED THE LAVA, GAME OVER :(");
+        document.location.reload();
+        clearInterval(interval);  // needed for the browser to end the game
+}
+else {
+    x = canvas.width/2;
+    y = canvas.height-30;
+    dx = 2;
+    dy = -2;
+    paddleX = (canvas.width-paddleWidth)/2;
+} 
         }
     }
-
+    
     // paddle controls
     if (rightPressed) {
         paddleX += 7;
@@ -101,13 +111,13 @@ function keyDownHandler(e) {
 function drawScore() {
     ctx.font = "16px Open Sans";
     ctx.fillStyle = "#000000";
-    ctx.fillText("Score: " + score, 8, 310);
+    ctx.fillText("Score: " + score, 8, 20);
 }
 
 function drawSpeed() {
     ctx.font = "16px Open Sans";
     ctx.fillStyle = "#000000";
-    ctx.fillText("Speed: " + Math.abs(dy), 405, 310);
+    ctx.fillText("Speed: " + Math.abs(dy), 400, 20);
 }
 
 function drawLives() {
