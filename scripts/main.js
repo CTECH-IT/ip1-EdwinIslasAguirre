@@ -17,6 +17,7 @@ let rightPressed = false;
 let leftPressed = false;
 
 let score = 0;
+let lives = 3;
 
 function drawBall() {
     ctx.beginPath();
@@ -84,6 +85,7 @@ function draw() {
     drawScore();
 
     drawSpeed();
+    drawLives();
 
 }
 
@@ -106,6 +108,12 @@ function drawSpeed() {
     ctx.font = "16px Open Sans";
     ctx.fillStyle = "#000000";
     ctx.fillText("Speed: " + Math.abs(dy), 405, 310);
+}
+
+function drawLives() {
+    ctx.font = "16px Open Sans";
+    ctx.fillstyle = "#000000";
+    ctx.fillText("Lives:" +lives, canvas.width-65, 20);
 }
 
 function keyUpHandler(e) {
